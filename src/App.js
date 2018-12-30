@@ -12,7 +12,7 @@ class App extends Component {
         <p>Rate : { this.props.pricePerCloth }₹/cloth</p>
         <p></p>
         <ul>
-          { this.props.clothes && this.props.clothes.map(cloth => (
+          { this.props.clothes && this.props.clothes.reverse().map(cloth => (
             <React.Fragment key={cloth.id}>
               <li className={ cloth.received ? 'received' : 'given' }>{ cloth.count }</li>
               { !cloth.received && 
