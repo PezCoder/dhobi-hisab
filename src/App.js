@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { giveClothesAction, receiveClothAction, updateCurrentBalanceAction } from './redux/appDuck.js';
+import CardList from './CardList.js';
 
 class App extends Component {
   render() {
@@ -10,17 +11,7 @@ class App extends Component {
       <div>
         <p className={ this.props.currentBalance < 0 ? 'red' : 'green' }>Balance : { this.props.currentBalance }₹</p>
         <p>Rate : { this.props.pricePerCloth }₹/cloth</p>
-        <p></p>
-        <ul>
-          { this.props.clothes && this.props.clothes.reverse().map(cloth => (
-            <React.Fragment key={cloth.id}>
-              <li className={ cloth.received ? 'received' : 'given' }>{ cloth.count }</li>
-              { !cloth.received && 
-                  <button onClick={ () => {this.props.onReceive(cloth.id, 14, this.props.currentBalance)} }>Receive</button>
-              }
-            </React.Fragment>
-          )) }
-        </ul>
+        <CardList clothes={this.props.clothes} onReceive={this.props.onReceive} currentBalance={this.props.currentBalance} pricePerCloth={this.props.pricePerCloth} />
         <button onClick={ () => {this.props.onGive(10, this.props.currentBalance, this.props.pricePerCloth) }}>Give</button>
       </div>
     );
