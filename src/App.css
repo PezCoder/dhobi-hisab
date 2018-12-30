@@ -5,3 +5,11 @@ li.given {
 li.received {
     background-color: green;
 }
+
+p.red {
+    color: red;
+}
+
+p.green {
+    color: green;
+}

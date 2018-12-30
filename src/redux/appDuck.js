@@ -6,6 +6,7 @@ const initialState = {
 
 const GIVE_CLOTHES = 'GIVE_CLOTHES';
 const RECEIVE_CLOTH = 'RECEIVE_CLOTH';
+const UPDATE_CURRENT_BALANCE = 'UPDATE_CURRENT_BALANCE';
 
 
 export const giveClothesAction = (payload) => {
@@ -18,6 +19,13 @@ export const giveClothesAction = (payload) => {
 export const receiveClothAction = (payload) => {
   return {
     type: RECEIVE_CLOTH,
+    payload
+  }
+}
+
+export const updateCurrentBalanceAction = (payload) => {
+  return {
+    type: UPDATE_CURRENT_BALANCE,
     payload
   }
 }
@@ -64,6 +72,11 @@ export default function(state = initialState, action) {
         clothes: updatedClothes,
       };
 
+    case UPDATE_CURRENT_BALANCE:
+      return {
+        ...state,
+        currentBalance: action.payload.updatedBalance,
+      }
     default:
       return state;
   }
