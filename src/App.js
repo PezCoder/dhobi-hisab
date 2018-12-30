@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { giveClothesAction } from './redux/appDuck.js';
+import { giveClothesAction, receiveClothAction } from './redux/appDuck.js';
 
 class App extends Component {
   render() {
@@ -11,7 +11,10 @@ class App extends Component {
       <div>
         <ul>
           { this.props.clothes && this.props.clothes.map(cloth => (
-            <li key={cloth.id}>{ cloth.count }</li>
+            <React.Fragment key={cloth.id}>
+              <li className={ cloth.received ? 'received' : 'given' }>{ cloth.count }</li>
+              <button onClick={ () => {this.props.receiveCloth(cloth.id)} }>Receive</button>
+            </React.Fragment>
           )) }
         </ul>
         <button onClick={ () => {this.props.giveClothes(10) }}>Give</button>
@@ -30,6 +33,9 @@ const mapDispatchToProps = dispatch => {
   return {
     giveClothes: count => {
       dispatch(giveClothesAction({ count }));
+    },
+    receiveCloth: id => {
+      dispatch(receiveClothAction({ id }));
     }
   };
 };
