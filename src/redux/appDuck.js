@@ -16,12 +16,15 @@ export const giveClothesAction = (payload) => {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GIVE_CLOTHES:
-  debugger;
       return {
         ...state,
         clothes: [
           ...state.clothes,
-          {count: action.payload.count},
+          {
+            id: state.clothes.length,
+            count: action.payload.count,
+            received: false,
+          },
         ]
       };
       // pricePerCloth: state.pricePerCloth,

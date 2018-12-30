@@ -6,17 +6,23 @@ import { giveClothesAction } from './redux/appDuck.js';
 
 class App extends Component {
   render() {
+    console.log('clothes in props', this.props.clothes);
     return (
       <div>
+        <ul>
+          { this.props.clothes && this.props.clothes.map(cloth => (
+            <li key={cloth.id}>{ cloth.count }</li>
+          )) }
+        </ul>
         <button onClick={ () => {this.props.giveClothes(10) }}>Give</button>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ app }) => {
   return {
-    clothes: state.clothes,
+    clothes: app.clothes,
   };
 };
 
