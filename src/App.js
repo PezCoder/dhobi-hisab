@@ -4,6 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { giveClothesAction, receiveClothAction, updateCurrentBalanceAction } from './redux/appDuck.js';
 import CardList from './CardList.js';
+import GiveClothes from './GiveClothes.js';
 
 class App extends Component {
   render() {
@@ -12,7 +13,7 @@ class App extends Component {
         <p className={ this.props.currentBalance < 0 ? 'red' : 'green' }>Balance : { this.props.currentBalance }₹</p>
         <p>Rate : { this.props.pricePerCloth }₹/cloth</p>
         <CardList clothes={this.props.clothes} onReceive={this.props.onReceive} currentBalance={this.props.currentBalance} pricePerCloth={this.props.pricePerCloth} />
-        <button onClick={ () => {this.props.onGive(10, this.props.currentBalance, this.props.pricePerCloth) }}>Give</button>
+        <GiveClothes onGive={this.props.onGive} currentBalance={this.props.currentBalance} pricePerCloth={this.props.pricePerCloth} />
       </div>
     );
   }

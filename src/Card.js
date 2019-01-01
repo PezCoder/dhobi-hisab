@@ -10,6 +10,7 @@ export default class Card extends Component {
     };
     this.handleAmountPaidChange = this.handleAmountPaidChange.bind(this);
     this.openReceiveModal = this.openReceiveModal.bind(this);
+    this.closeReceiveModal = this.closeReceiveModal.bind(this);
   }
 
   handleAmountPaidChange(e) {
@@ -21,6 +22,12 @@ export default class Card extends Component {
   openReceiveModal() {
     this.setState({
       isReceiveModalOpen: true,
+    })
+  }
+
+  closeReceiveModal() {
+    this.setState({
+      isReceiveModalOpen: false,
     })
   }
 
@@ -36,13 +43,13 @@ export default class Card extends Component {
               { this.state.isReceiveModalOpen &&
                   (
                     <React.Fragment>
-                      <div class="opaque-bg"></div>
-                      <div class="receive-modal">
+                      <div className="opaque-bg"></div>
+                      <div className="receive-modal">
                         <label htmlFor="amount-paid">Amount you paid</label>
                         <input id="amount-paid" type="number" required value={this.state.amountPaid} onChange={this.handleAmountPaidChange} />
                         <button onClick={ () => {
-                          this.state.isReceiveModalOpen = true;
                           onReceive(cloth.id, this.state.amountPaid, currentBalance);
+                          this.closeReceiveModal();
                         } }>✅</button>
                       </div>
                     </React.Fragment>
