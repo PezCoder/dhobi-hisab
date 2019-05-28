@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { giveClothesAction } from './redux/appDuck.js';
 
-export default class GiveClothes extends React.Component {
+export default class GiveClothes extends Component {
   constructor(props) {
     super(props);
     this.state = {
