@@ -38,7 +38,7 @@ export default class GiveClothes extends React.Component {
         <button onClick={ this.openGiveClothesModal }>Give</button>
         { this.state.isGiveClothesModalOpen &&
             <React.Fragment>
-              <div className="opaque-bg"></div>
+              <div className="opaque-bg" onClick={this.closeGiveClothesModal}></div>
               <div className="receive-modal">
                 <label htmlFor="no-of-clothes">No of clothes</label>
                 <input id="no-of-clothes" type="number" required value={this.state.clothesCount} onChange={this.handleClothesCountChange} />

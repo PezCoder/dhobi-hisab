@@ -43,7 +43,7 @@ export default class Card extends Component {
               { this.state.isReceiveModalOpen &&
                   (
                     <React.Fragment>
-                      <div className="opaque-bg"></div>
+                      <div className="opaque-bg" onClick={this.closeReceiveModal}></div>
                       <div className="receive-modal">
                         <label htmlFor="amount-paid">Amount you paid</label>
                         <input id="amount-paid" type="number" required value={this.state.amountPaid} onChange={this.handleAmountPaidChange} />
